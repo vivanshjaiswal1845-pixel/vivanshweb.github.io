@@ -1,0 +1,890 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Vivansh Web Studio</title>
+
+<style>
+*{
+  margin:0;
+  padding:0;
+  box-sizing:border-box;
+}
+
+html{
+  scroll-behavior:smooth;
+}
+
+body{
+  font-family:Arial,Helvetica,sans-serif;
+  background:#050507;
+  color:#fff;
+  line-height:1.6;
+}
+
+a{
+  text-decoration:none;
+  color:inherit;
+}
+
+header{
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:rgba(5,5,7,.82);
+  backdrop-filter:blur(18px);
+  border-bottom:1px solid #202025;
+}
+
+.navbar{
+  max-width:1150px;
+  margin:auto;
+  padding:18px 25px;
+  display:flex;
+  align-items:center;
+  justify-content:space-between;
+}
+
+.logo{
+  font-size:21px;
+  font-weight:900;
+  letter-spacing:1px;
+}
+
+.logo span{
+  color:#8b6cff;
+}
+
+.nav-links{
+  display:flex;
+  gap:28px;
+}
+
+.nav-links a{
+  color:#999;
+  transition:.3s;
+}
+
+.nav-links a:hover{
+  color:#fff;
+}
+
+.menu{
+  display:none;
+  background:none;
+  border:0;
+  color:#fff;
+  font-size:27px;
+}
+
+/* HERO */
+
+.hero{
+  min-height:92vh;
+  max-width:1150px;
+  margin:auto;
+  padding:80px 25px;
+  display:flex;
+  align-items:center;
+}
+
+.hero-content{
+  max-width:850px;
+  animation:fadeUp 1s ease;
+}
+
+.badge{
+  display:inline-block;
+  padding:8px 15px;
+  border:1px solid #333;
+  border-radius:50px;
+  color:#aaa;
+  font-size:11px;
+  letter-spacing:2px;
+}
+
+.hero h1{
+  font-size:clamp(48px,8vw,86px);
+  line-height:1;
+  margin:25px 0;
+}
+
+.hero h1 span{
+  color:#8b6cff;
+}
+
+.hero-text{
+  color:#999;
+  font-size:18px;
+  max-width:650px;
+}
+
+.buttons{
+  display:flex;
+  gap:15px;
+  margin-top:35px;
+}
+
+.btn{
+  padding:14px 25px;
+  border-radius:9px;
+  font-weight:bold;
+  display:inline-block;
+  transition:.3s;
+}
+
+.primary{
+  background:#7c5cff;
+  box-shadow:0 10px 35px rgba(124,92,255,.22);
+}
+
+.primary:hover{
+  transform:translateY(-4px);
+}
+
+.secondary{
+  border:1px solid #444;
+}
+
+.secondary:hover{
+  border-color:#8b6cff;
+  transform:translateY(-4px);
+}
+
+/* GENERAL */
+
+.section{
+  max-width:1150px;
+  margin:auto;
+  padding:100px 25px;
+}
+
+.label{
+  color:#9278ff;
+  font-size:12px;
+  font-weight:bold;
+  letter-spacing:3px;
+}
+
+h2{
+  font-size:clamp(36px,5vw,58px);
+  line-height:1.1;
+  margin:15px 0 45px;
+}
+
+/* SERVICES */
+
+.cards{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.card{
+  background:linear-gradient(145deg,#121217,#0c0c10);
+  border:1px solid #24242b;
+  padding:35px;
+  border-radius:20px;
+  transition:.35s;
+}
+
+.card:hover{
+  transform:translateY(-9px);
+  border-color:#7c5cff;
+  box-shadow:0 15px 40px rgba(0,0,0,.35);
+}
+
+.icon{
+  font-size:38px;
+  margin-bottom:20px;
+}
+
+.card h3{
+  font-size:23px;
+  margin-bottom:10px;
+}
+
+.card p{
+  color:#929292;
+}
+
+/* PROJECTS */
+
+.projects{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.project{
+  background:#101014;
+  border:1px solid #242429;
+  border-radius:20px;
+  overflow:hidden;
+  transition:.35s;
+}
+
+.project:hover{
+  transform:translateY(-8px);
+  border-color:#7c5cff;
+}
+
+.project-image{
+  height:220px;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:70px;
+}
+
+.restaurant{
+  background:linear-gradient(135deg,#391515,#160909);
+}
+
+.fitness{
+  background:linear-gradient(135deg,#142c43,#08131e);
+}
+
+.shop{
+  background:linear-gradient(135deg,#322718,#171108);
+}
+
+.project-info{
+  padding:25px;
+}
+
+.project-info small{
+  color:#9278ff;
+  letter-spacing:2px;
+  font-size:10px;
+}
+
+.project-info h3{
+  font-size:23px;
+  margin:6px 0;
+}
+
+.project-info span{
+  color:#888;
+}
+
+/* PRICING */
+
+.pricing{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:20px;
+}
+
+.price-card{
+  background:#101014;
+  border:1px solid #242429;
+  border-radius:20px;
+  padding:32px;
+  transition:.3s;
+}
+
+.price-card:hover{
+  transform:translateY(-7px);
+}
+
+.price-card.featured{
+  border:2px solid #7c5cff;
+  box-shadow:0 15px 45px rgba(124,92,255,.15);
+  transform:scale(1.03);
+}
+
+.popular{
+  display:inline-block;
+  background:#7c5cff;
+  padding:5px 10px;
+  border-radius:20px;
+  font-size:10px;
+  font-weight:bold;
+  margin-bottom:15px;
+}
+
+.price-card h3{
+  font-size:23px;
+}
+
+.price{
+  font-size:42px;
+  font-weight:bold;
+  margin:15px 0;
+}
+
+.price-card p{
+  color:#999;
+  margin-bottom:20px;
+}
+
+.price-card ul{
+  list-style:none;
+  color:#aaa;
+  margin-bottom:25px;
+}
+
+.price-card li{
+  margin:10px 0;
+}
+
+.price-card li::before{
+  content:"✓ ";
+  color:#8b6cff;
+  font-weight:bold;
+}
+
+/* ABOUT */
+
+.about{
+  background:#101014;
+  padding:110px 25px;
+}
+
+.about-content{
+  max-width:900px;
+  margin:auto;
+}
+
+.about-text{
+  color:#aaa;
+  font-size:18px;
+  max-width:720px;
+}
+
+.stats{
+  display:flex;
+  gap:60px;
+  margin-top:40px;
+  flex-wrap:wrap;
+}
+
+.stats strong{
+  display:block;
+  font-size:30px;
+  color:#9278ff;
+}
+
+.stats span{
+  color:#888;
+}
+
+/* WHY */
+
+.features{
+  display:grid;
+  grid-template-columns:repeat(3,1fr);
+  gap:25px;
+}
+
+.feature{
+  padding:25px;
+  border-left:2px solid #7c5cff;
+}
+
+.feature strong{
+  font-size:18px;
+}
+
+.feature p{
+  color:#888;
+  margin-top:8px;
+}
+
+/* CONTACT */
+
+.contact{
+  text-align:center;
+  padding:130px 25px;
+}
+
+.contact-description{
+  color:#999;
+  max-width:550px;
+  margin:0 auto 30px;
+}
+
+.contact-btn{
+  display:inline-block;
+  background:#7c5cff;
+  padding:15px 30px;
+  border-radius:9px;
+  font-weight:bold;
+  transition:.3s;
+}
+
+.contact-btn:hover{
+  transform:translateY(-4px);
+}
+
+/* FOOTER */
+
+footer{
+  border-top:1px solid #222;
+  padding:50px 25px;
+  text-align:center;
+}
+
+footer p{
+  color:#777;
+  margin:10px 0;
+}
+
+footer small{
+  color:#555;
+}
+
+/* ANIMATION */
+
+@keyframes fadeUp{
+  from{
+    opacity:0;
+    transform:translateY(25px);
+  }
+
+  to{
+    opacity:1;
+    transform:translateY(0);
+  }
+}
+
+/* MOBILE */
+
+@media(max-width:750px){
+
+  .nav-links{
+    display:none;
+    position:absolute;
+    top:68px;
+    left:0;
+    right:0;
+    background:#0b0b0e;
+    flex-direction:column;
+    gap:0;
+  }
+
+  .nav-links.active{
+    display:flex;
+  }
+
+  .nav-links a{
+    padding:17px 25px;
+    border-bottom:1px solid #222;
+  }
+
+  .menu{
+    display:block;
+  }
+
+  .cards,
+  .projects,
+  .pricing,
+  .features{
+    grid-template-columns:1fr;
+  }
+
+  .price-card.featured{
+    transform:none;
+  }
+
+  .hero{
+    min-height:82vh;
+  }
+
+  .hero h1{
+    font-size:50px;
+  }
+
+  .buttons{
+    flex-direction:column;
+  }
+
+  .btn{
+    text-align:center;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+
+<nav class="navbar">
+
+<div class="logo">
+VIVANSH<span>WEB</span>
+</div>
+
+<button class="menu" onclick="toggleMenu()">☰</button>
+
+<div class="nav-links" id="navLinks">
+<a href="#home">Home</a>
+<a href="#services">Services</a>
+<a href="#projects">Projects</a>
+<a href="#pricing">Pricing</a>
+<a href="#about">About</a>
+<a href="#contact">Contact</a>
+</div>
+
+</nav>
+
+</header>
+
+
+<section class="hero" id="home">
+
+<div class="hero-content">
+
+<div class="badge">
+WEB DESIGN • DEVELOPMENT
+</div>
+
+<h1>
+Websites that make
+<span>businesses stand out.</span>
+</h1>
+
+<p class="hero-text">
+Modern, responsive and professional websites
+for small businesses, creators and personal brands.
+</p>
+
+<div class="buttons">
+
+<a href="#projects" class="btn primary">
+View My Work
+</a>
+
+<a href="#contact" class="btn secondary">
+Let's Talk
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section" id="services">
+
+<p class="label">WHAT I DO</p>
+
+<h2>Services</h2>
+
+<div class="cards">
+
+<div class="card">
+<div class="icon">🏢</div>
+<h3>Business Websites</h3>
+<p>
+Professional websites designed to help businesses
+build trust and attract customers.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🎨</div>
+<h3>Portfolio Websites</h3>
+<p>
+Modern portfolio websites for creators,
+professionals and personal brands.
+</p>
+</div>
+
+<div class="card">
+<div class="icon">🛍️</div>
+<h3>Product Websites</h3>
+<p>
+Clean product pages and catalogues designed
+for mobile customers.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section" id="projects">
+
+<p class="label">MY WORK</p>
+
+<h2>Demo Projects</h2>
+
+<div class="projects">
+
+<div class="project">
+
+<div class="project-image restaurant">
+🍕
+</div>
+
+<div class="project-info">
+<small>DEMO PROJECT</small>
+<h3>Premium Restaurant</h3>
+<span>Restaurant Website</span>
+</div>
+
+</div>
+
+
+<div class="project">
+
+<div class="project-image fitness">
+🏋️
+</div>
+
+<div class="project-info">
+<small>DEMO PROJECT</small>
+<h3>Modern Fitness</h3>
+<span>Gym Website</span>
+</div>
+
+</div>
+
+
+<div class="project">
+
+<div class="project-image shop">
+🏪
+</div>
+
+<div class="project-info">
+<small>DEMO PROJECT</small>
+<h3>Local Business</h3>
+<span>Business Website</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section" id="pricing">
+
+<p class="label">PACKAGES</p>
+
+<h2>Simple Pricing</h2>
+
+<div class="pricing">
+
+<div class="price-card">
+
+<h3>Starter</h3>
+
+<div class="price">₹499</div>
+
+<p>For simple websites and personal projects.</p>
+
+<ul>
+<li>1-page website</li>
+<li>Mobile friendly</li>
+<li>Modern design</li>
+<li>Contact section</li>
+</ul>
+
+<a href="#contact" class="btn secondary">
+Choose Starter
+</a>
+
+</div>
+
+
+<div class="price-card featured">
+
+<div class="popular">
+MOST POPULAR
+</div>
+
+<h3>Business</h3>
+
+<div class="price">₹999</div>
+
+<p>For businesses wanting a professional online presence.</p>
+
+<ul>
+<li>Multiple sections</li>
+<li>Mobile responsive</li>
+<li>Premium design</li>
+<li>Contact section</li>
+</ul>
+
+<a href="#contact" class="btn primary">
+Choose Business
+</a>
+
+</div>
+
+
+<div class="price-card">
+
+<h3>Premium</h3>
+
+<div class="price">₹1,999</div>
+
+<p>For businesses wanting a more advanced website.</p>
+
+<ul>
+<li>Multiple sections</li>
+<li>Premium layout</li>
+<li>Animations</li>
+<li>Custom design</li>
+</ul>
+
+<a href="#contact" class="btn secondary">
+Choose Premium
+</a>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="about" id="about">
+
+<div class="about-content">
+
+<p class="label">ABOUT</p>
+
+<h2>Building websites with purpose.</h2>
+
+<p class="about-text">
+I'm Vivansh, a young web creator learning modern
+web design and development. I focus on clean,
+responsive and professional websites that work
+across phones, tablets and computers.
+</p>
+
+<div class="stats">
+
+<div>
+<strong>100%</strong>
+<span>Responsive</span>
+</div>
+
+<div>
+<strong>3+</strong>
+<span>Demo Projects</span>
+</div>
+
+<div>
+<strong>2026</strong>
+<span>Started</span>
+</div>
+
+</div>
+
+</div>
+
+</section>
+
+
+<section class="section">
+
+<p class="label">WHY CHOOSE ME</p>
+
+<h2>Simple. Modern. Professional.</h2>
+
+<div class="features">
+
+<div class="feature">
+<strong>📱 Mobile Friendly</strong>
+<p>
+Designed to work properly on phones and tablets.
+</p>
+</div>
+
+<div class="feature">
+<strong>⚡ Clean Design</strong>
+<p>
+Modern layouts without unnecessary clutter.
+</p>
+</div>
+
+<div class="feature">
+<strong>🎯 Business Focused</strong>
+<p>
+Designed to help visitors understand a business quickly.
+</p>
+</div>
+
+</div>
+
+</section>
+
+
+<section class="contact" id="contact">
+
+<p class="label">GET IN TOUCH</p>
+
+<h2>Have a project in mind?</h2>
+
+<p class="contact-description">
+Tell me about your business and the kind of website
+you are looking for.
+</p>
+
+<!-- Replace with a parent-managed business email -->
+
+<a
+class="contact-btn"
+href="mailto:YOUR_EMAIL@example.com">
+Contact Me →
+</a>
+
+</section>
+
+
+<footer>
+
+<div class="logo">
+VIVANSH<span>WEB</span>
+</div>
+
+<p>
+Professional websites for modern businesses.
+</p>
+
+<small>
+© 2026 Vivansh Web Studio
+</small>
+
+</footer>
+
+
+<script>
+
+function toggleMenu(){
+
+document
+.getElementById("navLinks")
+.classList.toggle("active");
+
+}
+
+document
+.querySelectorAll(".nav-links a")
+.forEach(function(link){
+
+link.addEventListener("click",function(){
+
+document
+.getElementById("navLinks")
+.classList.remove("active");
+
+});
+
+});
+
+</script>
+
+</body>
+</html>
